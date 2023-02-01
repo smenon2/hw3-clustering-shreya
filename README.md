@@ -77,7 +77,8 @@ scores = silhouette.score(labels)
   [ ] complete the `get_centroid` method  
 
 [ TODO ] Complete the Silhouette class with your implementation of the metric
-  [ ] complete the `score` method  
+
+[ ] complete the `score` method  
 
 [ TODO ] Unit Testing  
   [ ] KMeans Class  
