@@ -40,6 +40,9 @@ class KMeans:
         self.max_iter = max_iter
         np.random.seed(random_seed)
 
+        if not isinstance(k, int):
+            raise ValueError("k must be an integer")
+
     def _initialize_centroids(self, mat):
         """
         Initialize the centroids - K++ algorithm
@@ -85,6 +88,9 @@ class KMeans:
                 A 2D matrix where the rows are observations and columns are features
         """
         # np.random.seed(42)
+
+        if self.k is None or self.k == 0:
+            raise ValueError("k cannot be 0 or you have not initialized the kmeans class")
 
         k = self.k
         centroids = np.array(self._initialize_centroids(mat))
@@ -153,6 +159,8 @@ class KMeans:
             np.ndarray
                 a 1D array with the cluster label for each of the observations in `mat`
         """
+        if self.centroids is None:
+            raise ValueError("No centroids found - please fit kmeans before trying to predict")
 
         labels, errors = self._predict(self.centroids, mat)
         return labels
