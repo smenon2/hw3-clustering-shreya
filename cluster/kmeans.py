@@ -92,6 +92,9 @@ class KMeans:
         if self.k is None or self.k == 0:
             raise ValueError("k cannot be 0 or you have not initialized the kmeans class")
 
+        if self.k > mat.shape[0]:
+            raise ValueError("k cannot be greater than the input data size")
+
         k = self.k
         centroids = np.array(self._initialize_centroids(mat))
         print("Initial clusters:", centroids)
